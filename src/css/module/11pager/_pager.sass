@@ -1,0 +1,52 @@
+.pager
+  +clrfx
+  padding: 10px 0
+  font-size: 9px
+
+  &__list
+    text-align: center
+
+  &__item
+    +inline-block
+
+    a,span
+      +inline-block
+      padding: .2em .6em
+      border: 1px solid #999
+
+    &--current
+      span
+        background: $black
+        color: $white
+
+    &--mark
+      span
+        background: #867f71
+        color: $white
+
+
+  &__prev,
+  &__next,
+  &__num
+    padding: 0.1em .4em
+
+  &__prev,
+  &__next
+    background: #dad2c4
+    border: 1px solid #c3b5a0
+    a
+      display: inline-block
+      padding: .2em
+      color: #663300
+
+  &__prev
+    float: left
+    border-radius: 10px 0 0 10px
+
+  &__next
+    float: right
+    border-radius: 0 10px 10px 0
+
+  &__num
+    text-align: center
+

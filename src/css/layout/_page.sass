@@ -1,0 +1,27 @@
+.bodyInner
+  width: 100%
+  height: 100%
+  position: relative
+  // overflow-x: hidden
+
+.page,.globalNav
+  position: absolute
+  top: 0
+  left: 0
+  // overflow: hidden
+
+.page
+  z-index: 2
+  width: 100%
+  min-height: 100%
+  background: $white
+  -webkit-transition: -webkit-transform 0.2s ease-in-out
+  transition: -webkit-transform 0.2s ease-in-out
+  box-shadow: rgba(48, 48, 48, 0.470588) 0px 0px 8px 2px
+  -webkit-box-shadow: rgba(48, 48, 48, 0.470588) 0px 0px 8px 2px
+  -moz-box-shadow: rgba(48, 48, 48, 0.470588) 0px 0px 8px 2px
+  &.movemenu
+    -webkit-transform: translateX(70%)
+  &.movemenu--right
+    -webkit-transform: translateX(-70%)
+

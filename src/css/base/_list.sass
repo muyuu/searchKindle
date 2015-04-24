@@ -1,0 +1,30 @@
+// ------------------------------------
+// list
+// ------------------------------------
+ul,ol
+  margin: 0
+  padding: 0
+
+ul
+  li
+    list-style-type: none
+    // margin-left: 1.4em
+ol
+  list-style: none
+  counter-reset: li
+  li
+    position: relative
+    padding-left: 20px
+    &:before
+      content: counter(li)"."
+      counter-increment: li
+      padding-right: 6px
+      margin-left: -20px
+
+@if $support-ie7
+  *:first-child+html ol li
+    list-style-type: decimal !important
+    list-style-position: outside !important
+    margin-left: 24px
+    padding-left: 0
+

@@ -1,0 +1,9 @@
+// RGBをそれぞれ同じ量だけ明るく(暗く)する関数
+@function adjust-rgb($color, $dec: 1)
+  $num: 255 * $dec
+  @return adjust-color($color, $red: $num, $green: $num, $blue: $num)
+
+
+// exchange font size px to em
+@function em($px, $base: $baseFontSize)
+  @return ($px / $base) * 1em

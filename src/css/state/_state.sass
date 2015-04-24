@@ -1,0 +1,19 @@
+.s-notpc
+  display: none
+  @media screen and ( max-width: 1000px )
+    display: block !important
+
+
+.s-pconly
+  display: block
+  @media screen and ( max-width: 1000px )
+    display: none !important
+
+
+.js-toggleBtnSet
+  &:first-child
+    display: none
+
+.js-toggled-thumb
+  &.is-hide
+    display: none

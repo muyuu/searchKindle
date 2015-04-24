@@ -1,0 +1,59 @@
+.fa
+  margin-right: .2em
+
+.ic
+  display: inline-block
+  margin-right: 10px
+  line-height: 1
+  vertical-align: middle
+
+  &:before
+    display: inline-block
+    content: ""
+    background: transparent no-repeat left top
+    -webkit-background-size: contain
+    background-size: contain
+
+  // -----------------------
+  // modifier
+  // -----------------------
+  &--event:before,
+  &--release:before,
+  &--media:before,
+  &--video:before,
+  &--info:before
+    width: 46.5px
+    height: 13px
+
+  &--release:before
+    background-image: url("../img/ico_release.png")
+  &--event:before
+    background-image: url("../img/ico_event.png")
+  &--media:before
+    background-image: url("../img/ico_media.png")
+  &--video:before
+    background-image: url("../img/ico_video.png")
+  &--info:before
+    background-image: url("../img/ico_info.png")
+
+
+  &--right-allow:before
+    width: 11.5px
+    height: 11.5px
+    background-image: url("../img/ico_allow-right01.png")
+
+
+  // -----------------------
+  // position modifier
+  // -----------------------
+  &--right
+    margin-right: 0
+    margin-left: 10px
+    &-little
+      margin-right: 0
+      margin-left: 5px
+
+  &--both
+    margin:
+      left: 10px
+      right: 10px

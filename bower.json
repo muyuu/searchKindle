@@ -1,0 +1,12 @@
+{
+  "name": "antibase",
+  "version": "0.0.4",
+  "repository": "https://github.com/muyuu/base",
+  "ignore": [
+    "**/.*",
+    "node_modules"
+  ],
+  "dependencies": {
+    "fontawesome": "4.3"
+  }
+}

@@ -1,0 +1,87 @@
+.dropDown
+  position: relative
+
+  // --------------------------
+  //  common variable
+  // --------------------------
+  $borderColor: #ccc
+  $borderRadius: 2px
+
+  // --------------------------
+  //  element
+  // --------------------------
+  &__body
+    position: absolute
+    z-index: 10
+    display: none
+
+  // --------------------------
+  //  modifier
+  // --------------------------
+  &--is-active
+    .dropDown
+      &__select
+        position: relative
+        height: 2.4em
+
+        select
+          display: none
+
+      &__overlaySelect
+        overflow: hidden
+        position: absolute
+        top: 0
+        width: 100%
+        cursor: pointer
+
+        &Inner
+          overflow: hidden
+          padding: .4em
+          border: 1px solid $borderColor
+          border-radius: $borderRadius
+
+
+      &__body
+        display: inherit
+        width: 100%
+        height: 0
+        opacity: 0
+
+      &__list
+        overflow: auto
+        max-height: 160px
+        height: 0
+        background: #fff
+        border: 1px solid $borderColor
+        border-radius: $borderRadius
+
+      &__item
+        $itemVerticalPadding: .6em
+        $itemSidePadding: .5em
+        $itemPadding: $itemVerticalPadding $itemSidePadding
+        $itemMargin: (-$itemVerticalPadding) (-$itemSidePadding)
+        padding: $itemPadding
+        border-top: 1px solid $borderColor
+
+        &:first-child
+          border-top: none
+
+        a
+          display: block
+          margin: $itemMargin
+          padding: $itemPadding
+
+
+  &--is-open
+    .dropDown
+      &__body
+        display: inherit
+        opacity: 1
+        height: 100%
+      &__list
+        height: initial
+
+  &--is-transition
+    .dropDown
+      &__body
+        +transition(all, .4s)

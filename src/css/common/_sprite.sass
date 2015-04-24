@@ -1,0 +1,55 @@
+// ---------------------------------------------------------
+// アイコンのSprite
+// ---------------------------------------------------------
+@mixin icon ( $pass, $width, $hight )
+  @include inline-block
+  width: #{$width}
+  height: #{$height}
+  background: transparent url(#{$pass}) -1000px -1000px no-repeat
+  vertical-align: middle
+  text-indent: -9999px
+
+//個別のアイコン位置を指定
+//.docomo80 {
+//  background-position: -319px -77px
+//}
+//.docomo160 {
+//  background-position: -128px -213px
+//}
+
+// Sprite
+@mixin all-sprites($map, $dimensions: false)
+  $base-class: sprite-map-name($map)
+
+  .#{$base-class}-retina-sprite
+    background: sprite-url($map) no-repeat
+    @include background-size(image-width(sprite-path($map)) auto)
+
+  @each $sprite in sprite-names($map)
+    .#{$base-class}-#{$sprite}
+      @extend .#{$base-class}-retina-sprite
+      @if $dimensions
+        width: image-width(sprite-file($map, $sprite))
+        padding-top: image-height(sprite-file($map, $sprite))
+        height: 0
+        overflow: hidden
+      $pos: sprite-position($map, $sprite)
+      background-position: nth($pos, 1) nth($pos, 2)
+
+@mixin all-retina-sprites($map, $dimensions: false)
+  $base-class: sprite-map-name($map)
+
+  .#{$base-class}-retina-sprite
+    background: sprite-url($map) no-repeat
+    @include background-size(ceil(image-width(sprite-path($map)) / 2) auto)
+
+  @each $sprite in sprite-names($map)
+    .#{$base-class}-#{$sprite}
+      @extend .#{$base-class}-retina-sprite
+      @if $dimensions
+        width: ceil(image-width(sprite-file($map, $sprite)) / 2)
+        padding-top: ceil(image-height(sprite-file($map, $sprite)) / 2)
+        height: 0
+        overflow: hidden
+      $pos: sprite-position($map, $sprite)
+      background-position: ceil(nth($pos, 1) / 2) ceil(nth($pos, 2) / 2)

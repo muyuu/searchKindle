@@ -1,0 +1,26 @@
+.crossList
+  margin: 10px 0
+  &__item
+    padding: .4em
+    .ds &
+      background: #DAFE5C
+
+    .lb &
+      background: #FFE8B6
+
+    .ds &
+      &:nth-child(even)
+        background: #EBFEAB
+
+    .lb &
+      &:nth-child(even)
+        background: #FFF4DE
+
+  &__icon
+    a
+      margin-left: 4px
+      &:first-child
+        margin-left: 0
+
+      img
+        vertical-align: middle

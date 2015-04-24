@@ -1,0 +1,35 @@
+.globalNav
+  z-index: 1
+  width: 70%
+  height: 100%
+  background: $black
+
+  overflow-x: hidden
+  &__list
+    border-top: none
+    border-bottom: 1px solid $white
+  &__item
+    margin: 0
+    position: relative
+    border-bottom: none
+    border-top: 1px solid $white
+    a
+      display: block
+      color: #fff
+      text-decoration: none
+      padding: 15px 0 14px 20px
+      font-size: 16px
+      line-height: 20px
+
+    &.is-active
+      background: $black
+
+
+
+  // --------------------------
+  //  modifier
+  // --------------------------
+  &--right
+    right: 0
+    left: inherit
+    padding-top: 64px

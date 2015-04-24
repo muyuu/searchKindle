@@ -1,0 +1,35 @@
+//片方が幅固定の場合の2カラム
+//
+//片方のサイズが決まっていて、もう片方は決まっていない場合の2カラム」という条件の
+//2カラムを作成する際に重宝するモジュール
+//
+//.twoCol の子要素で、サイズが決まっている方に .twoCol__fixed を付与。
+//
+//また、右に寄せたい場合は .twoCol__fixed--right を付与
+//
+//  Markup: <div class="twoCol">
+//  <div class="twoCol__fixed {$modifiers}">
+//  <img src="http://placehold.it/180x100" alt="">
+//  </div>
+//  <div class="twoCol__fluid">
+//  <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+//  <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+//  <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+//  </div>
+//  </div>
+//
+//.twoCol__fixed--right - 右寄せ時に使用
+//
+//Styleguide 1.4
+
+.twoColTable
+  display: table
+  width: 100%
+
+  &__fluid,
+  &__fixed
+    display: table-cell
+    vertical-align: middle
+  &__fluid
+    padding: 0 10px
+

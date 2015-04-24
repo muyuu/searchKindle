@@ -1,0 +1,55 @@
+.dotBorder
+
+  // --------------------------
+  //  element
+  // --------------------------
+  &__list
+
+  &__item
+    padding: 10px
+    border-bottom: 1px dashed $black
+
+    >a
+      margin: -10px
+      padding: 10px
+      display: block
+
+
+  // --------------------------
+  //  modifier
+  // --------------------------
+  &--allow
+    margin-top: 0
+    .dotBorder__item
+      +linkListArrow(8px,8px)
+      &:after
+        right: 12px
+
+      >a
+        padding-right: 28px
+
+    &-black
+      margin-top: 0
+      .dotBorder__item
+        +linkListArrow(8px,8px)
+        &:after
+          right: 12px
+        >a
+          padding-right: 28px
+
+
+  &--last-none
+    .dotBorder__item
+      &:last-child
+        border: none
+
+  &--first-add
+    .dotBorder__item
+      &:first-child
+        border-top: 1px dashed $black
+
+
+  &--absorb
+    .dotBorder__item
+      &:first-child
+        padding-top: 0

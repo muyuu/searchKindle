@@ -1,0 +1,8 @@
+// rename "amazon.js"
+
+module.exports = {
+    endPoint: 'ecs.amazonaws.jp',
+    awsId: 'XXXXXXXXXXXXXXXXXXXX',
+    awsSecret: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    assocId: 'abcdabcd-XX'
+};

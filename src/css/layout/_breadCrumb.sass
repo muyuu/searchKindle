@@ -1,0 +1,21 @@
+.breadCrumb
+  padding: 10px 0
+  border-bottom: 1px solid $black
+
+  &__item
+    display: inline
+    line-height: 1.8
+    a
+      text-decoration: underline
+    &:before
+      content: ">"
+      margin: 0 6px
+    &:first-child
+      &:before
+        content: ""
+        margin: 0
+
+
+    &--current
+      &:after
+        content: ""

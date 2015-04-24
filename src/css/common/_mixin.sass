@@ -1,0 +1,89 @@
+// Replace Images
+@mixin replaceImg ( $url, $wd, $ht, $sp:0 )
+  overflow: hidden
+  display: block
+  @if ( $sp == 1 )
+    width: $wd / 2
+  @else
+    width: $wd
+  height: 0
+  @if ( $sp == 1 )
+    padding-top: $ht / 2
+  @else
+    padding-top: $ht
+  background: url($url) no-repeat left top
+  @if ( $sp == 1 )
+    -webkit-background-size: $wd / 2
+    background-size: $wd / 2
+
+// 通常の真下にホバー用画像がある感じのボタンの場合はこれが使える
+@mixin replaceImgHover ( $url, $wd, $ht, $sp:0 )
+  @include replaceImg( $url, $wd, $ht / 2, $sp )
+  &:hover
+    @if ( $sp == 1 )
+      background-position: left (-($ht / 4))
+    @else
+      background-position: left (-($ht / 2))
+
+
+//--------------------------------------------------
+// Grid System
+// ------------------------------------------------
+@mixin grid ($span)
+  $tmpwd: ($column-width * $span) + ($gutter-width * ($span - 1))
+
+  @if $support-responsive
+    width: percentage($tmpwd / $content-width)
+    margin-left: percentage($gutter-width / $content-width)
+  @else
+    width: $tmpwd
+    margin-left: $gutter-width
+
+
+// ------------------------------------------------
+// clearfix
+// ------------------------------------------------
+@mixin clrfx
+  @if $support-ie6 or $support-ie7
+    zoom: 1
+  &:before, &:after
+    content: "\0020"
+    display: block
+    height: 0
+    overflow: hidden
+  &:after
+    clear: both
+
+
+// ------------------------------------------------
+// 要素のスタイルをリセットしたい時用
+// ------------------------------------------------
+@mixin element-reset
+  border: none
+  background: none
+  padding: 0
+  margin: 0
+  font-size: 13px
+  font-weight: normal
+
+
+// ------------------------------------------------
+// display:inline-block を IE でも使えるようにする
+// ------------------------------------------------
+@mixin inline-block
+  display: inline-block
+  @if $support-ie6 or $support-ie7
+    *display: inline
+    *zoom: 1
+
+
+// ------------------------------------------------
+// table-cell を IE でも使えるようにする
+// ------------------------------------------------
+@mixin table-cell
+  display: table-cell
+  @if $support-ie6 or $support-ie7
+    *display: inline
+    *zoom: 1
+
+

@@ -1,0 +1,64 @@
+.row
+  @extend %clrfx
+  &--mt
+    margin-top: 20px
+
+.container
+  width: $content-width
+  margin: auto
+  .innerblock
+    padding: 1em
+
+.row
+  width: 100%
+
+  // modifier
+  &--addMargin
+    margin-top: 30px
+  &--addMargin10
+    margin-top: 10px
+  &--addMargin20
+    margin-top: 20px
+  .col1,.col2,.col3,.col4,.col5,.col6,
+  .col7,.col8,.col9,.col10,.col11,.col12
+    float: left
+    &:first-child
+      margin-left: 0
+
+  .col6:nth-child(odd), .col4:nth-child(3n+1),
+  .col3:nth-child(4n+1), .col2:nth-child(6n+1),
+  .col1:nth-child(12n+1)
+    margin-left: 0
+
+  @for $i from 1 through 12
+    .col#{$i}
+      @include grid($i)
+
+// --------------------------
+// レスポンシブ対応する場合
+// --------------------------
+@if $support-responsive
+  @media screen and ( max-width: $content-width )
+    .container
+      width: 100%
+
+    .inner
+      width: auto
+      //margin: 0 2%
+
+
+  //@media screen and ( max-width: 800px )
+  //  .row
+  //    .col1,.col2,.col3,.col4,.col5,.col6,
+  //    .col7,.col8,.col9,.col10,.col11,.col12
+  //      float: none
+  //      width: 100%
+  //      margin-left: 0
+  //    .col6:nth-child(odd), .col4:nth-child(3n+1),
+  //    .col3:nth-child(4n+1), .col2:nth-child(6n+1),
+  //    .col1:nth-child(12n+1)
+  //      margin-left: 0
+  //    > div
+  //      margin: 2em 0 0 0
+  //      &:first-child
+  //        margin: 0

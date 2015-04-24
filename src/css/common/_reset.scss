@@ -1,0 +1,153 @@
+// ===================================================================
+// reset CSS
+// ===================================================================
+
+/* Reset Style */
+html
+  overflow-y: scroll
+body
+  line-height: 1
+  color: #000
+
+@if $use_html5
+  html, body, div, span, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  abbr, address, cite, code,
+  del, dfn, em, img, ins, kbd, q, samp,
+  small, strong, sub, sup, var,
+  b, i,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, figcaption, figure,
+  footer, header, hgroup, menu, nav, section, summary,
+  time, mark, audio, video
+    margin: 0
+    padding: 0
+    border: 0
+    outline: 0
+    font-size: 100%
+    vertical-align: baseline
+    background: transparent
+
+  article,aside,details,figcaption,figure,
+  footer,header,hgroup,menu,nav,section
+    display: block
+
+  nav ul
+    list-style: none
+
+  blockquote, q
+    quotes: none
+
+  blockquote:before, blockquote:after,
+  q:before, q:after
+    content: ''
+    content: none
+
+  a
+    margin: 0
+    padding: 0
+    font-size: 100%
+    vertical-align: baseline
+    background: transparent
+
+  // change colours to suit your needs
+  ins
+    background-color: #ff9
+    color: #000
+    text-decoration: none
+
+  // change colours to suit your needs
+  mark
+    background-color: #ff9
+    color: #000
+    font-style: italic
+    font-weight: bold
+
+  del
+    text-decoration: line-through
+
+  abbr[title], dfn[title]
+    border-bottom: 1px dotted
+    cursor: help
+
+  table
+    border-collapse: collapse
+    border-spacing: 0
+
+  // change border colour to suit your needs
+  hr
+    display: block
+    height: 1px
+    border: 0
+    border-top: 1px solid #cccccc
+    margin: 1em 0
+    padding: 0
+
+  input, select
+    vertical-align: middle
+
+@else
+  body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+  form,fieldset,input,textarea,p,blockquote,th,td
+    margin:  0
+    padding: 0
+    address,caption,cite,code,dfn,em,strong,th,var
+      font-style: normal
+    table
+      border-collapse: collapse
+      border-spacing: 0
+    caption,th
+      text-align: left
+    q:before,q:after
+      content: ''
+    img,
+    object,
+    embed
+      vertical-align: top
+      hr,legend
+        display: none
+      h1,h2,h3,h4,h5,h6
+        font-size: 100%
+      img,abbr,acronym,fieldset
+        border: 0
+      li
+        list-style-type: none
+
+// YUI 3.4.1 (build 4118) Copyright 2011 Yahoo! Inc. All rights reserved.
+// Licensed under the BSD License. http://yuilibrary.com/license/
+// Percents could work for IE, but for backCompat purposes, we are using keywords.
+// x-small is for IE6/7 quirks mode.
+body
+  font: 13px/1.231 arial,helvetica,clean,sans-serif
+  *font-size: small
+  *font: x-small
+
+// Nudge down to get to 13px equivalent for these form elements
+select, input, button, textarea
+  font: 99% arial,helvetica,clean,sans-serif
+
+// To help tables remember to inherit
+table
+  font-size: inherit
+  font: 100%
+
+// Bump up IE to get to 13px equivalent for these fixed-width elements
+pre, code, kbd, samp, tt
+  font-family: monospace
+  *font-size: 108%
+  line-height: 100%
+
+
+// ===================================================================
+// フォントサイズ
+// ===================================================================
+$fontSizeList: 62%, 70%, 77%, 85%, 93%, 100%, 108%, 116%, 124%, 131%, 139%, 147%, 154%, 162%, 170%, 177%, 185%, 193%, 200%, 208%, 216%, 224%, 231%, 239%, 247%, 254%, 262%, 270%, 277%, 285%, 293%, 300%, 308%
+
+@function fz($size)
+  @if $size < 8
+    $size: 8
+  @if $size > 40
+    $size: 40
+  @return nth($fontSizeList, $size - 7)
