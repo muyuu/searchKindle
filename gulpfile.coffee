@@ -82,7 +82,6 @@ b.on('log', gutil.log)
 
 # watch
 g.task "watch", ["js"], ->
-  g.watch "#{cnf.src.html}**/*.jade", ["html"]
   g.watch "#{cnf.src.css}**/*.sass", ["css"]
 
 # default task

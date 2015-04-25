@@ -1,6 +1,4 @@
 var $ = require('jquery');
-var _ = require('lodash');
-var Bacon = require("baconjs");
 var React = require('react');
 
 
@@ -17,7 +15,6 @@ var KindleSearchBox = React.createClass({
             dataType: 'json',
             type    : 'get',
             success : function(data){
-                console.log(data);
                 this.setState({ data: data });
             }.bind(this),
             error   : function(xhr, status, err){

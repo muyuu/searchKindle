@@ -1,6 +1,3 @@
-var $ = require('jquery');
-var _ = require('lodash');
-var Bacon = require("baconjs");
 var React = require('react');
 
 // child components
@@ -15,7 +12,7 @@ var Result = React.createClass({
             );
         });
         return (
-          <div className="result__items row">
+          <div className="result__items">
               {itemNodes}
           </div>
         );
