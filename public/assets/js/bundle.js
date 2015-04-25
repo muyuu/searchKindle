@@ -1,40 +1,13 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
-var $ = require("jquery");
 var React = require("react");
 
-// components
-var Input = require("./components/input");
-var Result = require("./components/result");
+var KindleSearchBox = require("./components/kindleSearchBox");
 
-var KindleSearchBox = React.createClass({ displayName: "KindleSearchBox",
-    getBooks: function getBooks(obj) {
-        var str = obj.query;
-        $.ajax({
-            url: "/api/search/" + str,
-            dataType: "json",
-            type: "get",
-            success: (function (data) {
-                this.setState({ data: data });
-            }).bind(this),
-            error: (function (xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }).bind(this)
-        });
-    },
-    getInitialState: function getInitialState() {
-        return {
-            data: []
-        };
-    },
-    render: function render() {
-        return React.createElement("div", { className: "kindleSearch" }, React.createElement(Input, { onSearchApi: this.getBooks }), React.createElement(Result, { data: this.state.data }));
-    }
-});
 React.render(React.createElement(KindleSearchBox, null), document.getElementById("kindleSearchBox"));
 
-},{"./components/input":150,"./components/result":152,"jquery":3,"react":149}],2:[function(require,module,exports){
+},{"./components/kindleSearchBox":152,"react":149}],2:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -27595,6 +27568,10 @@ var React = require("react");
  * Input search word component
  */
 var Input = React.createClass({ displayName: "Input",
+    propTypes: {
+        onSearchApi: React.PropTypes.func.isRequired
+    },
+
     handleSubmit: function handleSubmit(e) {
         e.preventDefault();
         var queryStr = this.refs.q.getDOMNode().value.trim();
@@ -27604,10 +27581,12 @@ var Input = React.createClass({ displayName: "Input",
         this.props.onSearchApi({ query: queryStr });
         this.refs.q.getDOMNode().value = "";
     },
+
     render: function render() {
         return React.createElement("form", { className: "searchInput", onSubmit: this.handleSubmit }, React.createElement("p", null, React.createElement("input", { type: "radio", ref: "sordby", value: "famous", checked: "checked" }), "famous", React.createElement("input", { type: "radio", ref: "sordby", value: "price" }), "price", React.createElement("input", { type: "radio", ref: "sordby", value: "new" }), "new"), React.createElement("div", { className: "searchInput__input" }, React.createElement("input", { type: "text", placeholder: "search text...", ref: "q" }), React.createElement("input", { type: "submit", value: "Search" })));
     }
 });
+
 module.exports = Input;
 
 },{"react":149}],151:[function(require,module,exports){
@@ -27626,6 +27605,45 @@ module.exports = Item;
 },{"react":149}],152:[function(require,module,exports){
 "use strict";
 
+var $ = require("jquery");
+var React = require("react");
+
+// components
+var Input = require("./input");
+var Result = require("./result");
+
+var KindleSearchBox = React.createClass({ displayName: "KindleSearchBox",
+  getBooks: function getBooks(obj) {
+    var str = obj.query;
+    $.ajax({
+      url: "/api/search/" + str,
+      dataType: "json",
+      type: "get",
+      success: (function (data) {
+        this.setState({ data: data });
+      }).bind(this),
+      error: (function (xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }).bind(this)
+    });
+  },
+
+  getInitialState: function getInitialState() {
+    return {
+      data: []
+    };
+  },
+
+  render: function render() {
+    return React.createElement("div", { className: "kindleSearch" }, React.createElement(Input, { onSearchApi: this.getBooks }), React.createElement(Result, { data: this.state.data }));
+  }
+});
+
+module.exports = KindleSearchBox;
+
+},{"./input":150,"./result":153,"jquery":3,"react":149}],153:[function(require,module,exports){
+"use strict";
+
 var React = require("react");
 
 // child components
@@ -27639,6 +27657,7 @@ var Result = React.createClass({ displayName: "Result",
         return React.createElement("div", { className: "result__items" }, itemNodes);
     }
 });
+
 module.exports = Result;
 
 },{"./item":151,"react":149}]},{},[1])

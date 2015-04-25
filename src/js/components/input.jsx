@@ -4,6 +4,10 @@ var React = require('react');
  * Input search word component
  */
 var Input = React.createClass({
+    propTypes: {
+        onSearchApi: React.PropTypes.func.isRequired
+    },
+
     handleSubmit(e){
         e.preventDefault();
         var queryStr = this.refs.q.getDOMNode().value.trim();
@@ -13,6 +17,7 @@ var Input = React.createClass({
         this.props.onSearchApi({ query: queryStr });
         this.refs.q.getDOMNode().value = '';
     },
+
     render(){
         return (
             <form className="searchInput" onSubmit={this.handleSubmit}>
@@ -29,4 +34,5 @@ var Input = React.createClass({
         );
     }
 });
+
 module.exports = Input;
