@@ -2,7 +2,7 @@ var $ = require('jquery');
 var React = require('react');
 
 
-// components
+// React Components
 var Input = require('./input');
 var Result = require('./result');
 
